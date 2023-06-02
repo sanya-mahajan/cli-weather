@@ -1,0 +1,24 @@
+import sys
+from pathlib import Path
+
+if (args_count := len(sys.argv)) > 2:
+    print(f"One argument expected, got {args_count - 1}")
+    raise SystemExit(2)
+elif args_count < 2:
+    print("You must specify the city")
+    raise SystemExit(2)
+
+city = sys.argv[1]
+#call the weather api using the city 
+
+# Path: weather.py
+import requests
+import json
+
+url= f'http://api.openweathermap.org/data/2.5/weather?q={city},uk&APPID=085fda458203e968986502370bc92d0c'
+r=requests.get(url)
+data=r.json()
+print(data)
+
+
+    
