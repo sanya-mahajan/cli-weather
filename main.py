@@ -13,9 +13,11 @@ city = sys.argv[1]
 
 # Path: weather.py
 import requests
-import json
+import json, os
+from dotenv import load_dotenv
+load_dotenv()
 
-url= f'http://api.openweathermap.org/data/2.5/weather?q={city},uk&APPID=085fda458203e968986502370bc92d0c'
+url= f'http://api.openweathermap.org/data/2.5/weather?q={city},uk&APPID={os.getenv("APPID")}'
 r=requests.get(url)
 data=r.json()
 print(data)
